@@ -4,6 +4,7 @@
 # Development: sudo docker run -v /media/sf_Workspace/:/mount/sf_Workspace/:rw -i -t -p 9000:9000 peenuty/garner-webui bash
 #							 bower --allow-root install
 
+
 FROM ubuntu:12.04
 MAINTAINER Richard Gill <richard@rgill.co.uk>
 
@@ -56,7 +57,10 @@ run     mkdir ~/.vnc
 # Setup a password
 run     x11vnc -storepasswd 1234 ~/.vnc/passwd
 
+run 		echo "Xvfb -ac :99 &" > ~/startXserver.sh 
+RUN     chmod u+x ~/startXserver.sh
 
+ENV DISPLAY :99
 
 # Expose the port
 EXPOSE 9000
