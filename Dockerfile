@@ -26,11 +26,24 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 	RUN       rm -r node-v$NODE_VERSION
 	RUN       apt-get remove -y build-essential python wget
 
-	
+# Grunt needs git
+	RUN apt-get -y install git 
+
 # Install yeo
 
 	RUN npm install -g yo
 
 	# Get angular generator
 	RUN npm install -g generator-angular
+
+	# Add a yeoman user because grunt doesn't like being root
+	RUN adduser --disabled-password --gecos "" yeoman; \
+		echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+	
+	ENV HOME /home/yeoman
+	USER yeoman
+	WORKDIR /home/yeoman
+
+# Expose the port
+EXPOSE 9000
 
