@@ -52,7 +52,7 @@ USER root
 
 # Setup firefox + a display to run tests.
 run     apt-get install -y x11vnc xvfb firefox
-run     mkdir /.vnc
+run     mkdir ~/.vnc
 # Setup a password
 run     x11vnc -storepasswd 1234 ~/.vnc/passwd
 
