@@ -8,5 +8,5 @@ build:
     - script:
         name: Run specs
         code: |
-          docker run -v $PWD/garner-webui:/mount/garner-webui garner_rails cd /mount/garner-webui && grunt 
+          docker run -v $PWD/garner-webui:/mount/garner-webui peenuty/garner-webui cd /mount/garner-webui && grunt 
 no-response-timeout: 10
