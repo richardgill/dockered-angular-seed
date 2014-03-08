@@ -1,5 +1,8 @@
 # Web development environment in node et. al.
 
+# Development: sudo docker run -v /media/sf_Workspace/:/mount/sf_Workspace/:rw -i -t -p 9000:9000 peenuty/garner-webui bash
+#							 bower --allow-root install
+
 FROM ubuntu:12.04
 MAINTAINER Richard Gill <richard@rgill.co.uk>
 
@@ -43,6 +46,8 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 	ENV HOME /home/yeoman
 	USER yeoman
 	WORKDIR /home/yeoman
+
+USER root
 
 # Expose the port
 EXPOSE 9000
