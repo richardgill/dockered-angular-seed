@@ -1,5 +1,6 @@
 # Web development environment in node et. al.
 
+# Build: sudo docker build -t peenuty/garner-webui .
 # Development: sudo docker run -v /media/sf_Workspace/:/mount/sf_Workspace/:rw -i -t -p 9000:9000 peenuty/garner-webui bash
 #							 bower --allow-root install
 
@@ -48,6 +49,14 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 	WORKDIR /home/yeoman
 
 USER root
+
+# Setup firefox + a display to run tests.
+run     apt-get install -y x11vnc xvfb firefox
+run     mkdir /.vnc
+# Setup a password
+run     x11vnc -storepasswd 1234 ~/.vnc/passwd
+
+
 
 # Expose the port
 EXPOSE 9000
