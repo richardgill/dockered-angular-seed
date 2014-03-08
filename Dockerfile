@@ -26,6 +26,11 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 	RUN       rm -r node-v$NODE_VERSION
 	RUN       apt-get remove -y build-essential python wget
 
+	
 # Install yeo
 
-RUN npm install -g yo
+	RUN npm install -g yo
+
+	# Get angular generator
+	RUN npm install -g generator-angular
+
