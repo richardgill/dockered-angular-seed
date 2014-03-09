@@ -1,9 +1,10 @@
 # Web development environment in node et. al.
 
 # Build: sudo docker build -t peenuty/garner-webui .
-# Development: sudo docker run -v /media/sf_Workspace/:/mount/sf_Workspace/:rw -i -t -p 9000:9000 peenuty/garner-webui bash
-#							 bower --allow-root install
-
+# Development: sudo docker run -v /$PWD/web:/mount/workspace/:rw -i -t -p 9000:9000 peenuty/garner-webui bash
+#							 cd /mount/workspace/
+#							 npm install
+#							 grunt (or grunt serve)
 
 FROM ubuntu:12.04
 MAINTAINER Richard Gill <richard@rgill.co.uk>
