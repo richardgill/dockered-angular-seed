@@ -4,7 +4,7 @@
     return describe('app-version', function() {
       return it('should print current version', function() {
         module(function($provide) {
-          $provide.value('version', 'TEST_VER');
+          $provide.value('version1', 'TEST_VER');
           return null;
         });
         return inject(function($compile, $rootScope) {

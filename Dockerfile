@@ -45,7 +45,9 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 # Install Bower
 	RUN npm install -g bower
 
-USER root
+# Install Karma
+  RUN npm install -g karma
+
 
 # Setup firefox + a display to run tests.
 run     apt-get install -y x11vnc xvfb firefox
@@ -60,5 +62,6 @@ ENV DISPLAY :99
 
 # Expose the port
 EXPOSE 9000
+EXPOSE 9876
 EXPOSE 35729
 
