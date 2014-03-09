@@ -1,4 +1,6 @@
 module.exports = (grunt) ->
+  mountFolder = (connect, dir) -> connect.static(require('path').resolve(dir))
+
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
@@ -40,9 +42,15 @@ module.exports = (grunt) ->
         ]
 
     watch:
+      options: 
+        livereload: true
+
       js:
         files: ['_app/js/*', '_test/**/*']
         tasks: ['coffee']
+        options:
+          livereload: true
+        
 
       css:
         files: ['_app/css/*']
@@ -51,6 +59,29 @@ module.exports = (grunt) ->
       haml:
         files: ['_app/*', '_app/partials/*']
         tasks: ['haml']
+        options:
+          livereload: true
+
+      livereload:
+        options:  
+          livereload: true
+        files: ['app/**/*.html']
+    
+
+    connect:
+      server:
+        options: 
+          port: 9000
+          middleware: (connect, options) -> 
+            [
+            
+              require('connect-livereload')(src: "http://#{require('ip').address()}:35729/livereload.js?snipver=1"),
+              mountFolder(connect, '.tmp'),
+              mountFolder(connect, 'app')
+            ]
+
+ 
+      
 
   grunt.loadTasks "tasks"
 
@@ -59,6 +90,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-sass')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-contrib-connect')
 
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass"]
 
