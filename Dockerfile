@@ -6,7 +6,7 @@
 #							 npm install
 #							 grunt (or grunt serve)
 
-FROM ubuntu:12.04
+FROM peenuty/rails-passenger-nginx
 MAINTAINER Richard Gill <richard@rgill.co.uk>
 
 # Install Node
@@ -35,20 +35,9 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 # Grunt needs git
 	RUN apt-get -y install git 
 
-# Install yeo
+# Install Sass
 
-	RUN npm install -g yo
-
-	# Get angular generator
-	RUN npm install -g generator-angular
-
-	# Add a yeoman user because grunt doesn't like being root
-	RUN adduser --disabled-password --gecos "" yeoman; \
-		echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-	
-	ENV HOME /home/yeoman
-	USER yeoman
-	WORKDIR /home/yeoman
+	RUN bash -l -c "gem install sass"
 
 USER root
 
