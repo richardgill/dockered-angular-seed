@@ -63,7 +63,7 @@ module.exports = (grunt) ->
 
       haml:
         files: ['_app/*', '_app/partials/*']
-        tasks: ['haml']
+        tasks: ['haml', 'bowerInstall']
     
 
     connect:
@@ -89,6 +89,7 @@ module.exports = (grunt) ->
     karma:
       unit:
         configFile: 'config/karma.conf.coffee'
+      
 
 
   grunt.loadTasks "tasks"
