@@ -4,6 +4,10 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
+    concurrent: 
+      serverwatch: ['connect:server:keepalive', 'watch']
+    
+    
     clean:
       files: ["tmp/"]
 
@@ -48,10 +52,7 @@ module.exports = (grunt) ->
       js:
         files: ['_app/js/*', '_test/**/*']
         tasks: ['coffee']
-        options:
-          livereload: true
         
-
       css:
         files: ['_app/css/*']
         tasks: ['sass']
@@ -59,13 +60,6 @@ module.exports = (grunt) ->
       haml:
         files: ['_app/*', '_app/partials/*']
         tasks: ['haml']
-        options:
-          livereload: true
-
-      livereload:
-        options:  
-          livereload: true
-        files: ['app/**/*.html']
     
 
     connect:
@@ -74,14 +68,12 @@ module.exports = (grunt) ->
           port: 9000
           middleware: (connect, options) -> 
             [
-            
+
               require('connect-livereload')(src: "http://#{require('ip').address()}:35729/livereload.js?snipver=1"),
               mountFolder(connect, '.tmp'),
               mountFolder(connect, 'app')
             ]
 
- 
-      
 
   grunt.loadTasks "tasks"
 
@@ -91,6 +83,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-connect')
+  grunt.loadNpmTasks('grunt-concurrent')
 
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass"]
+  grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "concurrent:serverwatch"]
 
