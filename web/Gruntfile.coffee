@@ -13,10 +13,14 @@ module.exports = (grunt) ->
 
     haml:
       app:
-        files: 
-          "app/index.html" : "_app/index.haml"
-          "app/partials/partial1.html" : "_app/partials/partial1.haml"
-          "app/partials/partial2.html" : "_app/partials/partial2.haml"
+        files: [ 
+          expand: true,
+          cwd: './_app/',
+          src: ['**/*.haml'],
+          dest: 'app/',
+          ext: '.html',
+          flatten: false
+        ]
 
     sass:
       dist:
