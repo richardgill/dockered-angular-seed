@@ -1,10 +1,10 @@
 # Web development environment in node et. al.
 
 # Build: sudo docker build -t peenuty/garner-webui .
-# Development: sudo docker run -v /$PWD/web:/mount/workspace/:rw -i -t -p 9000:9000 peenuty/garner-webui bash
+# Development: sudo docker run -v $PWD/web:/mount/garner-webui -p 9000:9000 -p 35729:35729 -e IP=$(hostname -I | awk '{print $1}') -i -t peenuty/garner-webui bash
 #							 cd /mount/workspace/
 #							 npm install
-#							 grunt (or grunt serve)
+#							 grunt serve
 
 FROM peenuty/rails-passenger-nginx
 MAINTAINER Richard Gill <richard@rgill.co.uk>
@@ -56,4 +56,5 @@ ENV DISPLAY :99
 
 # Expose the port
 EXPOSE 9000
+EXPOSE 35729
 
