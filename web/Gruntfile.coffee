@@ -74,6 +74,12 @@ module.exports = (grunt) ->
               mountFolder(connect, 'app')
             ]
 
+    bowerInstall:
+      target:
+
+        src: [
+          "app/index.html"
+        ]
 
   grunt.loadTasks "tasks"
 
@@ -84,7 +90,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-concurrent')
+  grunt.loadNpmTasks('grunt-bower-install')
 
-  grunt.registerTask "default", ["clean", "haml", "coffee", "sass"]
-  grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "concurrent:serverwatch"]
+  grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall"]
+  grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "bowerInstall", "concurrent:serverwatch"]
 

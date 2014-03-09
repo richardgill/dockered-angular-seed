@@ -5,4 +5,6 @@ web/app/partials/*
 web/app/js/*
 web/app/css/*
 web/app/index.html
+web/app/bower_components/*
+web/bower_components/*
 **/*.smbdelete*

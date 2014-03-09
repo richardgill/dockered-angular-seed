@@ -41,6 +41,10 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 
 # Install grunt
 	RUN npm install -g grunt-cli
+
+# Install Bower
+	RUN npm install -g bower
+
 USER root
 
 # Setup firefox + a display to run tests.
