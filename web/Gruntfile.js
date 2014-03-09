@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
-
+  grunt.loadNpmTasks('grunt-haml');
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -24,6 +24,26 @@ module.exports = function (grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
+
+    haml: {
+      index: {
+        src: "app/views/main.html.haml",
+        dest: "dist/views/main.html"
+      }
+    },
+
+    // haml: {
+    //   compile: {
+    //     files: [
+    //       {
+    //         expand: true,     // Enable dynamic expansion.
+    //         src: ['app/**/*.haml'], // Actual pattern(s) to match.
+    //         dest: 'dist/',   // Destination path prefix.
+    //         ext: '.html'   // Dest filepaths will have this extension.
+    //       },
+    //     ]
+    //   }
+    // },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -37,6 +57,15 @@ module.exports = function (grunt) {
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
+      },
+      // compile haml files
+      // each file must be listed individually, see the readme
+      haml: {
+        files: ['<%= yeoman.app %>/views/{,*/}*.haml'],
+        tasks: [ 'haml' ],
+        options: {
+          livereload: true
+        }
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
