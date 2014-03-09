@@ -1,3 +1,6 @@
+# Karma configuration
+# Generated on Sun Mar 09 2014 20:10:10 GMT+0000 (UTC)
+
 module.exports = (config) ->
   config.set
 
@@ -9,16 +12,7 @@ module.exports = (config) ->
 
     # list of files / patterns to load in the browser
     files: [
-      'app/bower_components/jquery/jquery.js'
-      'app/bower_components/angular/angular.js'
-      'app/bower_components/angular-resource/angular-resource.js'
-      'app/bower_components/angular-cookies/angular-cookies.js'
-      'app/bower_components/angular-sanitize/angular-sanitize.js'
-      'app/bower_components/angular-route/angular-route.js'
-      'app/bower_components/angular-mocks/angular-mocks.js'
-      'app/bower_components/bootstrap/dist/js/bootstrap.js'
-      'app/js/**/*.js'
-      'test/unit/**/*.js'
+      
     ]
 
     # list of files to exclude
@@ -38,7 +32,7 @@ module.exports = (config) ->
 
     # level of logging
     # possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DEBUG
+    logLevel: config.LOG_INFO
 
     # enable / disable watching file and executing tests whenever any file changes
     autoWatch: true

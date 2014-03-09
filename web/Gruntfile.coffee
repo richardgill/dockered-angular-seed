@@ -85,6 +85,12 @@ module.exports = (grunt) ->
           "app/index.html"
         ]
 
+
+    karma:
+      unit:
+        configFile: 'config/karma.conf.coffee'
+
+
   grunt.loadTasks "tasks"
 
   grunt.loadNpmTasks('grunt-haml')
@@ -95,6 +101,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-concurrent')
   grunt.loadNpmTasks('grunt-bower-install')
+  grunt.loadNpmTasks('grunt-karma')
 
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall"]
   grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "bowerInstall", "concurrent:serverwatch"]
