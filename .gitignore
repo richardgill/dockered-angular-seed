@@ -4,3 +4,4 @@ web/node_modules
 web/app/partials/*
 web/app/js/*
 web/app/css/*
+web/app/index.html
