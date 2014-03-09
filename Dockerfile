@@ -48,6 +48,11 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 # Install Karma
   RUN npm install -g karma
 
+# Install protractor 
+	RUN npm install -g protractor
+
+# Intstall JFK which protractor needs to work
+	RUN apt-get -y install openjdk-7-jre-headless
 
 # Setup firefox + a display to run tests.
 run     apt-get install -y x11vnc xvfb firefox
@@ -64,4 +69,5 @@ ENV DISPLAY :99
 EXPOSE 9000
 EXPOSE 9876
 EXPOSE 35729
+EXPOSE 4444
 

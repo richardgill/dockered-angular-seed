@@ -1,7 +1,8 @@
-#http://docs.angularjs.org/guide/dev_guide.e2e-testing
+describe 'angularjs homepage', ->
 
-describe 'posboss app', ->
+  it 'should greet the named user', ->
+        # Load the AngularJS homepage.
+    browser.get('http://www.angularjs.org')
 
-  beforeEach ->
-    browser().navigateTo('../../app/index.html')
 
+    

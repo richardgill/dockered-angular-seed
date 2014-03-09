@@ -1,22 +1,19 @@
-basePath = '../';
+// An example configuration file.
+exports.config = {
+  // The address of a running selenium server.
+  seleniumAddress: 'http://localhost:4444/wd/hub',
 
-files = [
-  ANGULAR_SCENARIO,
-  ANGULAR_SCENARIO_ADAPTER,
-  'test/e2e/**/*.js'
-];
+  // Capabilities to be passed to the webdriver instance.
+  capabilities: {
+    'browserName': 'chrome'
+  },
 
-autoWatch = false;
+  // Spec patterns are relative to the location of the spec file. They may
+  // include glob patterns.
+  specs: ['../**/*/*scenarios.js'],
 
-browsers = ['Firefox'];
-
-singleRun = true;
-
-proxies = {
-  '/': 'http://localhost:8000/'
-};
-
-junitReporter = {
-  outputFile: 'test_out/e2e.xml',
-  suite: 'e2e'
+  // Options to be passed to Jasmine-node.
+  jasmineNodeOpts: {
+    showColors: true, // Use colors in the command line report.
+  }
 };
