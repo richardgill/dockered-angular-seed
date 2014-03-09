@@ -68,8 +68,8 @@ module.exports = (grunt) ->
           port: 9000
           middleware: (connect, options) -> 
             [
-
-              require('connect-livereload')(src: "http://#{require('ip').address()}:35729/livereload.js?snipver=1"),
+              # Either grap our ip from environment variable or from ip library.
+              require('connect-livereload')(src: "http://#{process.env.IP || require('ip').address()}:35729/livereload.js?snipver=1"),
               mountFolder(connect, '.tmp'),
               mountFolder(connect, 'app')
             ]
