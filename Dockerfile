@@ -39,6 +39,8 @@ MAINTAINER Richard Gill <richard@rgill.co.uk>
 
 	RUN bash -l -c "gem install sass"
 
+# Install grunt
+	RUN npm install -g grunt-cli
 USER root
 
 # Setup firefox + a display to run tests.
