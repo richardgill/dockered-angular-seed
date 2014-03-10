@@ -8,5 +8,5 @@ build:
     - script:
         name: Run specs
         code: |
-          docker run -v $PWD/web:/mount/garner-webui peenuty/garner-webui bash -c "~/startXserver.sh && ls -ltr && cd /mount/garner-webui && grunt" 
+          docker run -v $PWD/web:/mount/garner-webui peenuty/garner-webui bash -c "~/startXserver.sh && cd /mount/garner-webui &&  npm install && bower install --allow-root && grunt" 
 no-response-timeout: 10
