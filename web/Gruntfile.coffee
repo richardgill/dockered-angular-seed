@@ -28,6 +28,11 @@ module.exports = (grunt) ->
         files: 
           'app/css/app.css' : '_app/css/app.sass'
 
+    bowerComponents:
+      dist:
+        files: 
+          'bower_components/**/*' : 'app/bower_components'
+
     coffee:
       scripts: 
         files: [
@@ -86,6 +91,13 @@ module.exports = (grunt) ->
           "app/index.html"
         ]
 
+    copy: 
+      bowerComponents:
+        files: [
+          expand: true, src: ['bower_components/**'], dest: 'app/bower_components'
+        ]
+  
+
 
     karma:
       unit:
@@ -97,6 +109,7 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks('grunt-haml')
   grunt.loadNpmTasks('grunt-contrib-coffee')
+  grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-sass')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-contrib-watch')
@@ -105,6 +118,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-bower-install')
   grunt.loadNpmTasks('grunt-karma')
 
-  grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall"]
-  grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "bowerInstall", "concurrent:serverwatch"]
+
+  grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents"]
+  grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "concurrent:serverwatch"]
 
