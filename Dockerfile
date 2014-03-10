@@ -6,7 +6,7 @@
 #							 npm install
 #							 grunt serve
 
-FROM peenuty/rails-passenger-nginx
+FROM peenuty/rails-passenger-nginx-docker-i:1.0.1
 MAINTAINER Richard Gill <richard@rgill.co.uk>
 
 # Install Node
