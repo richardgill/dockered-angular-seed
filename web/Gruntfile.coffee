@@ -6,6 +6,7 @@ module.exports = (grunt) ->
 
     concurrent: 
       serverwatch: ['connect:server:keepalive', 'watch']
+      options: logConcurrentOutput: true
     
     
     clean:
