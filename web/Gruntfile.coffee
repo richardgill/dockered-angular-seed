@@ -94,7 +94,7 @@ module.exports = (grunt) ->
     copy: 
       bowerComponents:
         files: [
-          expand: true, src: ['bower_components/*'], dest: 'app/'
+          expand: true, src: ['bower_components/**/*'], dest: 'app/'
         ]
   
 
