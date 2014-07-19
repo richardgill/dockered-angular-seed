@@ -20,7 +20,7 @@
 
 SCRIPT
 
-sudo docker run -v $PWD:/mount/angular-webui/ -p 9000:9000 -p 35729:35729 -e IP=$(hostname -I | awk '{print $1}') -i -t angular-webui bash
+sudo docker run -v $PWD:/mount/angular-webui/ -p 9000:9000 -p 9876:9876 -p 35729:35729 -e IP=$(hostname -I | awk '{print $1}') -i -t angular-webui bash
 
 
 }
