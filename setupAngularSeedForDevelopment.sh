@@ -16,7 +16,7 @@
 
         echo "You need to run:\n"
         # npm and bower try to chown things... this causes alot of problems with docker, so we symblink the directories so they are local and not mounted.
-        echo "cd /mount/angular-webui/web && ln -s /tmp/node_modules . && ln -s /tmp/bower_components . && npm install && bower install --allow-root && grunt serve"
+        echo "~/startXserver.sh && cd /mount/angular-webui/web && ln -s /tmp/node_modules . && ln -s /tmp/bower_components . && npm install && bower install --allow-root && grunt serve"
 
 SCRIPT
 
