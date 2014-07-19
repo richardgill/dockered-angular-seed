@@ -37,8 +37,8 @@ RUN npm cache clean
 # Install Bower
     RUN npm install -g bower
 
-# Install Karma
-  RUN npm install -g karma
+# Install Karma-cli
+  RUN npm install -g karma-cli
 
 # Install protractor
     RUN npm install -g protractor
