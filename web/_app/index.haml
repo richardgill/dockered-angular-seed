@@ -5,18 +5,19 @@
     %meta{charset: 'utf-8' }/
     %title Garner - Your secrets. Safe.
     %link{rel: 'stylesheet', href: 'css/app.css' }
-  
+
     / bower:css
 
 
     / endbower
-  
+
   %body
     %div{ng-view: ''}
 
     %div
       %span{app-version: ''}
-    
+    %span{app-environment: ''}
+
     / bower:js
 
 
@@ -28,3 +29,4 @@
     %script{src: 'js/controllers.js' }
     %script{src: 'js/filters.js' }
     %script{src: 'js/directives.js' }
+    %script{src: 'js/config.js' }
