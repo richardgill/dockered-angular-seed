@@ -160,3 +160,4 @@ module.exports = (grunt) ->
   grunt.registerTask "serve", ["build", "concurrent:appwatch"]
   grunt.registerTask "test-serve", ["build", "ngconstant:test", "concurrent:testwatch"]
   grunt.registerTask "e2e-tests", ["build", "ngconstant:test", "concurrent:e2etests"]
+  grunt.registerTask "unit-tests-watch", ["karma"]

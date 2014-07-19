@@ -19,9 +19,10 @@
         echo "cd /mount/angular-webui/ && ln -s /tmp/node_modules . && ln -s /tmp/bower_components . && scripts/startXServerForFirefox.sh && npm install && bower install --allow-root && scripts/setupE2ETests.sh"
 
         echo "\nThen you can do: \n\n"
-        echo "grunt serve             -> This will serve the application to http://$IP:8888 open it in your browser :)"
-        echo "grunt karma             -> Runs the unit tests and watches for changes."
-        echo "grunt protractor:e2e    -> Runs the end to end tests."
+        echo "grunt serve               -> This will serve the application to http://$IP:8888 open it in your browser :)"
+        echo "grunt unit-tests-watch    -> Runs the unit tests and watches for changes. Attach your browser by going to http://$IP:9876"
+        echo "grunt e2e-tests           -> Runs the end to end tests."
+        echo "coffee startServer.coffee -> Runs the server using express (like when deployed)."
 
 SCRIPT
 
