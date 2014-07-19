@@ -9,21 +9,21 @@ module.exports = (config) ->
 
     # list of files / patterns to load in the browser
     files: [
-      'app/bower_components/jquery/jquery.js'
-      'app/bower_components/angular/angular.js'
-      'app/bower_components/angular-resource/angular-resource.js'
-      'app/bower_components/angular-cookies/angular-cookies.js'
-      'app/bower_components/angular-sanitize/angular-sanitize.js'
-      'app/bower_components/angular-route/angular-route.js'
-      'app/bower_components/angular-mocks/angular-mocks.js'
-      'app/bower_components/bootstrap/dist/js/bootstrap.js'
-      'app/js/**/*.js'
-      'test/unit/**/*.js'
+      'dist/app/bower_components/jquery/jquery.js'
+      'dist/app/bower_components/angular/angular.js'
+      'dist/app/bower_components/angular-resource/angular-resource.js'
+      'dist/app/bower_components/angular-cookies/angular-cookies.js'
+      'dist/app/bower_components/angular-sanitize/angular-sanitize.js'
+      'dist/app/bower_components/angular-route/angular-route.js'
+      'dist/app/bower_components/angular-mocks/angular-mocks.js'
+      'dist/app/bower_components/bootstrap/dist/js/bootstrap.js'
+      'dist/app/js/**/*.js'
+      'dist/test/unit/**/*.js'
     ]
 
     # list of files to exclude
     exclude: [
-      
+
     ]
 
     # test results reporter to use

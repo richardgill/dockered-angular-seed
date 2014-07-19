@@ -21,7 +21,7 @@ module.exports = (grunt) ->
           expand: true,
           cwd: './_app/',
           src: ['**/*.haml'],
-          dest: 'app/',
+          dest: 'dist/app/',
           ext: '.html',
           flatten: false
         ]
@@ -29,12 +29,12 @@ module.exports = (grunt) ->
     sass:
       dist:
         files:
-          'app/css/app.css' : '_app/css/app.sass'
+          'dist/app/css/app.css' : '_app/css/app.sass'
 
     bowerComponents:
       dist:
         files:
-          'bower_components/**/*' : 'app/bower_components'
+          'bower_components/**/*' : 'dist/app/bower_components'
 
     coffee:
       scripts:
@@ -42,19 +42,19 @@ module.exports = (grunt) ->
           expand: true,
           cwd: './_app/js',
           src: ['*.coffee'],
-          dest: 'app/js',
+          dest: 'dist/app/js',
           ext: '.js'
         ,
           expand: true,
           cwd: './_test/e2e',
           src: ['*.coffee'],
-          dest: './test/e2e',
+          dest: 'dist/test/e2e',
           ext: '.js'
         ,
           expand: true,
           cwd: './_test/unit',
           src: ['*.coffee'],
-          dest: './test/unit',
+          dest: 'dist/test/unit',
           ext: '.js'
         ]
 
@@ -84,7 +84,7 @@ module.exports = (grunt) ->
               # Either grap our ip from environment variable or from ip library.
               require('connect-livereload')(src: "http://#{process.env.IP || require('ip').address()}:35729/livereload.js?snipver=1"),
               mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'app')
+              mountFolder(connect, 'dist/app')
             ]
 
       test:
@@ -96,20 +96,20 @@ module.exports = (grunt) ->
               # Either grap our ip from environment variable or from ip library.
               require('connect-livereload')(src: "http://#{process.env.IP || require('ip').address()}:35729/livereload.js?snipver=1"),
               mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'app')
+              mountFolder(connect, 'dist/app')
             ]
 
     bowerInstall:
       target:
 
         src: [
-          "app/index.html"
+          "dist/app/index.html"
         ]
 
     copy:
       bowerComponents:
         files: [
-          expand: true, src: ['bower_components/**/*'], dest: 'app/'
+          expand: true, src: ['bower_components/**/*'], dest: 'dist/app/'
         ]
 
 
@@ -128,7 +128,7 @@ module.exports = (grunt) ->
     ngconstant:
       options:
         name: 'config'
-        dest: 'app/js/config.js'
+        dest: 'dist/app/js/config.js'
         constants:
           version: '0.9.0'
 

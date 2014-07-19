@@ -1,6 +1,6 @@
 describe 'service', ->
   beforeEach module('myApp.services')
 
-  describe 'version', ->
-    it 'should return current version', inject (version) ->
-      expect(version).toEqual('0.1')
+  describe 'version123', ->
+    it 'should return current version', inject (version123) ->
+      expect(version123).toEqual('123')
