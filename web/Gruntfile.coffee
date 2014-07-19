@@ -7,6 +7,8 @@ module.exports = (grunt) ->
     concurrent:
       appwatch: ['connect:app:keepalive', 'watch']
       testwatch: ['connect:test:keepalive', 'watch']
+      e2etests: ['connect:test:keepalive', 'protractor:e2e']
+
       options: logConcurrentOutput: true
 
 
@@ -156,4 +158,5 @@ module.exports = (grunt) ->
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents"]
   grunt.registerTask "build", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "ngconstant:#{process.env.ENVIRONMENT}"]
   grunt.registerTask "serve", ["build", "concurrent:appwatch"]
-  grunt.registerTask "testserve", ["build", "ngconstant:test", "concurrent:testwatch"]
+  grunt.registerTask "test-serve", ["build", "ngconstant:test", "concurrent:testwatch"]
+  grunt.registerTask "e2e-tests", ["build", "ngconstant:test", "concurrent:e2etests"]
