@@ -4,17 +4,17 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
-    concurrent: 
+    concurrent:
       serverwatch: ['connect:server:keepalive', 'watch']
       options: logConcurrentOutput: true
-    
-    
+
+
     clean:
       files: ["tmp/"]
 
     haml:
       app:
-        files: [ 
+        files: [
           expand: true,
           cwd: './_app/',
           src: ['**/*.haml'],
@@ -25,16 +25,16 @@ module.exports = (grunt) ->
 
     sass:
       dist:
-        files: 
+        files:
           'app/css/app.css' : '_app/css/app.sass'
 
     bowerComponents:
       dist:
-        files: 
+        files:
           'bower_components/**/*' : 'app/bower_components'
 
     coffee:
-      scripts: 
+      scripts:
         files: [
           expand: true,
           cwd: './_app/js',
@@ -56,13 +56,13 @@ module.exports = (grunt) ->
         ]
 
     watch:
-      options: 
+      options:
         livereload: true
 
       js:
         files: ['_app/js/*', '_test/**/*']
         tasks: ['coffee']
-        
+
       css:
         files: ['_app/css/*']
         tasks: ['sass']
@@ -70,13 +70,13 @@ module.exports = (grunt) ->
       haml:
         files: ['_app/*', '_app/partials/*']
         tasks: ['haml', 'bowerInstall']
-    
+
 
     connect:
       server:
-        options: 
+        options:
           port: 9000
-          middleware: (connect, options) -> 
+          middleware: (connect, options) ->
             [
               # Either grap our ip from environment variable or from ip library.
               require('connect-livereload')(src: "http://#{process.env.IP || require('ip').address()}:35729/livereload.js?snipver=1"),
@@ -91,18 +91,23 @@ module.exports = (grunt) ->
           "app/index.html"
         ]
 
-    copy: 
+    copy:
       bowerComponents:
         files: [
           expand: true, src: ['bower_components/**/*'], dest: 'app/'
         ]
-  
+
 
 
     karma:
       unit:
         configFile: 'config/karma.conf.coffee'
-      
+
+    protractor:
+      e2e:
+        configFile: "config/karma-e2e.conf.js",
+        keepAlive: false
+        noColor: true
 
 
   grunt.loadTasks "tasks"
@@ -117,8 +122,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-concurrent')
   grunt.loadNpmTasks('grunt-bower-install')
   grunt.loadNpmTasks('grunt-karma')
-
+  grunt.loadNpmTasks('grunt-protractor-runner');
 
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents"]
   grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "concurrent:serverwatch"]
-
