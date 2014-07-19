@@ -140,6 +140,10 @@ module.exports = (grunt) ->
         constants:
           environment: 'test'
 
+      production:
+        constants:
+          environment: 'production'
+
   grunt.loadTasks "tasks"
 
   grunt.loadNpmTasks('grunt-haml')
