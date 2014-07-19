@@ -52,9 +52,6 @@ run     mkdir ~/.vnc
 # Setup a password
 run     x11vnc -storepasswd 1234 ~/.vnc/passwd
 
-run 		echo "Xvfb -ac :99 &" > ~/startXserver.sh
-RUN     chmod u+x ~/startXserver.sh
-
 ENV DISPLAY :99
 
 RUN mkdir /tmp/node_modules
