@@ -55,7 +55,7 @@ run     mkdir ~/.vnc
 run     x11vnc -storepasswd 1234 ~/.vnc/passwd
 
 ENV DISPLAY :99
-ENV ENVIRONMENT development
+ENV NODE_ENV development
 
 RUN mkdir /tmp/node_modules
 RUN mkdir /tmp/bower_components

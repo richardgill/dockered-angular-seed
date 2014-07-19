@@ -156,7 +156,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-sass');
 
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents"]
-  grunt.registerTask "build", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "ngconstant:#{process.env.ENVIRONMENT}"]
+  grunt.registerTask "build", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "ngconstant:#{process.env.NODE_ENV}"]
   grunt.registerTask "serve", ["build", "concurrent:appwatch"]
   grunt.registerTask "test-serve", ["build", "ngconstant:test", "concurrent:testwatch"]
   grunt.registerTask "e2e-tests", ["build", "ngconstant:test", "concurrent:e2etests"]
