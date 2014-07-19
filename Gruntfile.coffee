@@ -145,7 +145,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-haml')
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-contrib-copy')
-  grunt.loadNpmTasks('grunt-contrib-sass')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-connect')
@@ -154,6 +153,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-karma')
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-ng-constant');
+  grunt.loadNpmTasks('grunt-sass');
 
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents"]
   grunt.registerTask "build", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "ngconstant:#{process.env.ENVIRONMENT}"]
