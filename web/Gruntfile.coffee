@@ -105,7 +105,7 @@ module.exports = (grunt) ->
 
     protractor:
       e2e:
-        configFile: "config/karma-e2e.conf.js",
+        configFile: "config/protractor-e2e.conf.js",
         keepAlive: false
         noColor: true
 
