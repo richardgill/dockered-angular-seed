@@ -13,7 +13,7 @@ module.exports = (grunt) ->
 
 
     clean:
-      files: ["tmp/"]
+      files: ["tmp/", "dist/"]
 
     haml:
       app:

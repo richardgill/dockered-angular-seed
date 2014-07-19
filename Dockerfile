@@ -30,21 +30,23 @@ ENV PATH /nodejs/bin:$PATH
     RUN bash -l -c "gem install sass"
 
 RUN npm cache clean
+# Install coffee-script
+  RUN npm install -g coffee-script
 
 # Install grunt
-    RUN npm install -g grunt-cli
+  RUN npm install -g grunt-cli
 
 # Install Bower
-    RUN npm install -g bower
+  RUN npm install -g bower
 
 # Install Karma-cli
   RUN npm install -g karma-cli
 
 # Install protractor
-    RUN npm install -g protractor
+  RUN npm install -g protractor
 
-# Intstall JFK which protractor needs to work
-    RUN apt-get -y install openjdk-7-jre-headless
+# Install JFK which protractor needs to work
+  RUN apt-get -y install openjdk-7-jre-headless
 
 # Setup firefox + a display to run tests.
 run     apt-get install -y x11vnc xvfb firefox
