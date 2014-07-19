@@ -1,9 +1,9 @@
-web/dist/
-web/.tmp
-web/node_modules
-web/app/**/*
-web/dist/**/*
-web/logs/
-web/bower_components/*
+dist/
+.tmp
+node_modules
+app/**/*
+dist/**/*
+logs/
+bower_components/*
 **/*.smbdelete*
 npm-debug.log

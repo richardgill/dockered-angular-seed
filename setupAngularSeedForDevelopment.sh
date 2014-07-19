@@ -16,7 +16,7 @@
 
         echo "You need to run:\n"
         # npm and bower try to chown things... this causes alot of problems with docker, so we symblink the directories so they are local and not mounted.
-        echo "cd /mount/angular-webui/web && ln -s /tmp/node_modules . && ln -s /tmp/bower_components . && scripts/startXServerForFirefox.sh && npm install && bower install --allow-root && scripts/setupE2ETests.sh"
+        echo "cd /mount/angular-webui/ && ln -s /tmp/node_modules . && ln -s /tmp/bower_components . && scripts/startXServerForFirefox.sh && npm install && bower install --allow-root && scripts/setupE2ETests.sh"
 
         echo "\nThen you can do: \n\n"
         echo "grunt serve             -> This will serve the application to http://$IP:8888 open it in your browser :)"
