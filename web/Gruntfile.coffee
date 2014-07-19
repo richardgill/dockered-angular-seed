@@ -5,7 +5,8 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON('package.json')
 
     concurrent:
-      serverwatch: ['connect:server:keepalive', 'watch']
+      appwatch: ['connect:app:keepalive', 'watch']
+      testwatch: ['connect:test:keepalive', 'watch']
       options: logConcurrentOutput: true
 
 
@@ -73,10 +74,22 @@ module.exports = (grunt) ->
 
 
     connect:
-      server:
+      app:
         options:
           port: 9000
           middleware: (connect, options) ->
+            [
+              # Either grap our ip from environment variable or from ip library.
+              require('connect-livereload')(src: "http://#{process.env.IP || require('ip').address()}:35729/livereload.js?snipver=1"),
+              mountFolder(connect, '.tmp'),
+              mountFolder(connect, 'app')
+            ]
+
+      test:
+        options:
+          port: 9000
+          middleware: (connect, options) ->
+            process.env.ENVIRONMENT = "TEST"
             [
               # Either grap our ip from environment variable or from ip library.
               require('connect-livereload')(src: "http://#{process.env.IP || require('ip').address()}:35729/livereload.js?snipver=1"),
@@ -110,6 +123,21 @@ module.exports = (grunt) ->
         noColor: true
 
 
+    ngconstant:
+      options:
+        name: 'config'
+        dest: 'app/js/config.js'
+        constants:
+          version: '0.9.0'
+
+      development:
+        constants:
+          environment: 'development'
+
+      test:
+        constants:
+          environment: 'test'
+
   grunt.loadTasks "tasks"
 
   grunt.loadNpmTasks('grunt-haml')
@@ -123,6 +151,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-bower-install')
   grunt.loadNpmTasks('grunt-karma')
   grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-ng-constant');
 
   grunt.registerTask "default", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents"]
-  grunt.registerTask "serve", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "concurrent:serverwatch"]
+  grunt.registerTask "build", ["clean", "haml", "coffee", "sass", "bowerInstall", "copy:bowerComponents", "ngconstant:#{process.env.ENVIRONMENT}"]
+  grunt.registerTask "serve", ["build", "concurrent:appwatch"]
+  grunt.registerTask "testserve", ["build", "ngconstant:test", "concurrent:testwatch"]
