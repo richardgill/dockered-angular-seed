@@ -10,6 +10,8 @@ It will set up a docker container for you to work in. No installing node and oth
 
 ##Getting started
 
+You must have docker installed on linux.
+
 Check it out and run ./setupAngularSeedForDevelopment.sh 
 
 This will setup your environment. Then follow the on screen instructions.
