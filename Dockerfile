@@ -1,20 +1,7 @@
 # Web development environment in node et. al.
 
-# Build: sudo docker build -t rgill/angular-webui .
-# Development: sudo docker run -v $PWD/web:/mount/angular-webui -p 9000:9000 -p 35729:35729 -e IP=$(hostname -I | awk '{print $1}') -i -t rgill/angular-webui bash
-#							 cd /mount/workspace/
-#							 npm install
-#							 grunt serve
-
 FROM lgsd/docker-rails
 MAINTAINER Richard Gill <richard@rgill.co.uk>
-# Web development environment in node et. al.
-
-# Build: sudo docker build -t peenuty/nodej-npm-sass-docker .
-
-
-FROM peenuty/rails-passenger-nginx-docker-i:1.0.1
-MAINTAINER Richard Gill <peenuty@gmail.com>
 
 RUN apt-get update -y && apt-get install --no-install-recommends -y -q curl python build-essential git ca-certificates
 
