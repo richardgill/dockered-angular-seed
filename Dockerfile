@@ -36,7 +36,7 @@ RUN npm cache clean
   RUN apt-get -y install openjdk-7-jre-headless
 
 # Setup firefox + a display to run tests.
-run     apt-get install -y x11vnc xvfb firefox
+run     apt-get install -y x11vnc xvfb
 run     mkdir ~/.vnc
 # Setup a password
 run     x11vnc -storepasswd 1234 ~/.vnc/passwd
